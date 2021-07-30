@@ -1,0 +1,60 @@
+{
+  "ops_list": [
+    {
+      "login": {
+        "email": "12345@111.com",
+        "?email": "ops登录账号",
+        "password": "123456",
+        "?password": "ops登陆密码",
+        "ops_addr": "192.168.3.228:8002",
+        "?ops_addr": "ops1地址"
+      },
+      "opsconfig": {
+        "key": "servers.platform",
+        "?key": "要修改的配置（更换hub地址）",
+        "value": "192.168.3.210:8995",
+        "?value": "配置值"
+      }
+    },
+    {
+      "login": {
+        "email": "12345@111.com",
+        "?email": "ops登录账号",
+        "password": "123456",
+        "?password": "ops登陆密码",
+        "ops_addr": "192.168.3.228:8002",
+        "?ops_addr": "ops2地址"
+      },
+      "opsconfig": {
+        "key": "servers.platform",
+        "?key": "要修改的配置（更换hub地址）",
+        "value": "192.168.3.210:8994",
+        "?value": "配置值"
+      }
+    }
+  ],
+  "test": {
+      "enable": "false",
+      "login": {
+        "email": "12345@111.com",
+        "?email": "ops登录账号",
+        "password": "123456",
+        "?password": "ops登陆密码",
+        "ops_addr": "192.168.3.228:8002",
+        "?ops_addr": "ops地址"
+      },
+      "identity": {
+        "facility_id": "ewt",
+        "equipment_id": "131",
+        "product_line": "qweq",
+        "stage": "cengqian",
+        "function": "wg"
+      },
+      "opsconfig": {
+        "key": "servers.platform",
+        "?key": "要修改的配置（更换hub地址）",
+        "value": "192.168.3.210:89231",
+        "?value": "配置值"
+      }
+    }
+}

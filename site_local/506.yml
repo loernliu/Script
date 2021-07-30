@@ -1,0 +1,80 @@
+﻿camera_station:
+    pre_process:
+    -   cell_cut_setting:
+            auto_algo: EL基础切片
+            col_lines: []
+            mode: auto
+            row_lines: []
+        edge_cut_setting:
+            auto_algo: 外观基础切图
+            bottom_left:
+            - 16
+            - 585
+            bottom_right:
+            - 3830
+            - 594
+            mode: manual
+            top_left:
+            - 16
+            - 2
+            top_right:
+            - 3830
+            - 16
+        file_name_reg: .*.jpg
+        name: 默认
+        pixel_adjust:
+            brightness: 0
+            contrast: 1
+            enabled: false
+    slice_mode:
+        TM_algorithm_on: true
+        algorithm: default
+        chamfer_direction: ''
+        flip_pic_col: false
+        flip_pic_row: false
+        flip_slice_col: false
+        flip_slice_row: false
+        h_flip: false
+        perspective_padding: 30
+        perspective_parameters: perspective_ja_M1L3.pkl
+        perspective_slice_img_num: 0
+        save_module_pic: true
+        undistort_parameters: ''
+        v_flip: false
+identity:
+    equipment_id: HJ506
+    facility_id: M2
+    function: el
+    product_line: L5
+    stage: chuanjian
+servers:
+    opsconfig: 10.9.69.248:8102
+wg_camera_station:
+    pre_process:
+    -   cell_cut_setting:
+            auto_algo: 外观基础切片
+            col_lines: []
+            mode: auto
+            row_lines: []
+        edge_cut_setting:
+            auto_algo: 外观基础切图
+            bottom_left: []
+            bottom_right: []
+            mode: auto
+            top_left: []
+            top_right: []
+        file_name_reg: .*.jpg
+        name: 默认
+        pixel_adjust:
+            brightness: 0
+            contrast: 1
+            enabled: false
+    slice_mode:
+        algorithm: default
+        flip_slice_col: false
+        flip_slice_row: false
+        h_flip: false
+        perspective_parameters: perspective_ja_M1L3.pkl
+        perspective_slice_img_num: 0
+        undistort_parameters: ''
+        v_flip: false

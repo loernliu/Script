@@ -1,0 +1,907 @@
+__files:
+    defect_recipe: config_maven.yml
+bar_scanner:
+    com:
+        baudrate: 9600
+        port: com5
+    serial_length: 0
+    type: com
+camera_station:
+    ASIC_dir_structure: false
+    async_mode: false
+    component_recipe:
+        active_recipe: ''
+        recipe_list:
+        -   name: "\u793A\u4F8B\u4E00"
+            rules_by_class:
+                yinlie:
+                -   conditions:
+                        area_ratio:
+                        - 0
+                        - 0.13
+                        prob:
+                        - 0
+                        - 0.9
+                    max_cells_per_compoment: 0
+                    max_defects_per_cell: 0
+                -   conditions:
+                        area_ratio:
+                        - 0
+                        - 0.15
+                        prob:
+                        - 0
+                        - 0.9
+                    max_cells_per_compoment: 0
+                    max_defects_per_cell: 1
+    confirm_mode: none
+    defect_recipe:
+        active_recipe: sb
+        code: ja965874
+        recipe_list:
+        -   name: cj
+            rules_by_class:
+                huahen:
+                    fake_defect_rules:
+                    -   prob:
+                        - 0
+                        - 0.941
+                    -   diag_ratio:
+                        - 0
+                        - 0.315
+                        prob:
+                        - 0.941
+                        - 1
+                    true_defect_rules: []
+                shixiao:
+                    fake_defect_rules:
+                    -   area_ratio:
+                        - 0
+                        - 0.015
+                        prob:
+                        - 0.941
+                        - 1.0
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                xuhan:
+                    fake_defect_rules:
+                    -   edge_dist_ratio_min_ver:
+                        - 0.3
+                        - 0.6
+                        locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.45
+                        - 1
+                    -   h_ratio:
+                        - 0
+                        - 0.2
+                        locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0
+                        - 0.25
+                    -   edge_dist_ratio_min:
+                        - 0.033
+                        - 1
+                        h_ratio:
+                        - 0
+                        - 0.176
+                        prob:
+                        - 0.89
+                        - 1
+                        w_ratio:
+                        - 0
+                        - 0.25
+                    -   edge_dist_ratio_min:
+                        - -1
+                        - 0.033
+                        h_ratio:
+                        - 0
+                        - 0.176
+                        prob:
+                        - 0.89
+                        - 1
+                        w_ratio:
+                        - 0
+                        - 0.25
+                    -   locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.45
+                        - 1.1
+                    -   prob:
+                        - 0
+                        - 0.89
+                    true_defect_rules: []
+                yinlie:
+                    fake_defect_rules:
+                    -   prob:
+                        - 0
+                        - 0.95
+                    true_defect_rules: []
+        -   name: "\u96F6\u9690\u88C2"
+            rules_by_class:
+                huahen:
+                    fake_defect_rules:
+                    -   diag_ratio:
+                        - 0
+                        - 0.15
+                        prob:
+                        - 0.941
+                        - 1
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                shixiao:
+                    fake_defect_rules:
+                    -   area_ratio:
+                        - 0
+                        - 0.0065
+                        prob:
+                        - 0.941
+                        - 1
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                xuhan:
+                    fake_defect_rules:
+                    -   locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.4
+                        - 1.1
+                    -   prob:
+                        - 0
+                        - 0.89
+                    true_defect_rules: []
+                yinlie:
+                    fake_defect_rules:
+                    -   prob:
+                        - 0
+                        - 0.94
+                    true_defect_rules: []
+        -   name: cj-new
+            rules_by_class:
+                huahen:
+                    fake_defect_rules:
+                    -   prob:
+                        - 0
+                        - 0.985
+                    -   diag_ratio:
+                        - 0
+                        - 0.6
+                        prob:
+                        - 0.985
+                        - 1
+                    true_defect_rules: []
+                shixiao:
+                    fake_defect_rules:
+                    -   area_ratio:
+                        - 0
+                        - 0.015
+                        prob:
+                        - 0.941
+                        - 1.0
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                xuhan:
+                    fake_defect_rules:
+                    -   edge_dist_ratio_min_ver:
+                        - 0.3
+                        - 0.6
+                        locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.4
+                        - 1
+                    -   h_ratio:
+                        - 0
+                        - 0.23
+                        locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0
+                        - 0.26
+                    -   edge_dist_ratio_min:
+                        - 0.033
+                        - 1
+                        h_ratio:
+                        - 0
+                        - 0.23
+                        prob:
+                        - 0.97
+                        - 1
+                        w_ratio:
+                        - 0
+                        - 0.26
+                    -   locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.4
+                        - 1.1
+                    -   prob:
+                        - 0
+                        - 0.965
+                    true_defect_rules: []
+                yinlie:
+                    fake_defect_rules:
+                    -   area_ratio:
+                        - 0
+                        - 0.001
+                    -   prob:
+                        - 0
+                        - 0.94
+                    true_defect_rules: []
+        -   name: sb
+            rules_by_class:
+                huahen:
+                    fake_defect_rules:
+                    -   diag_ratio:
+                        - 0
+                        - 0.3
+                        prob:
+                        - 0.941
+                        - 1
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                shixiao:
+                    fake_defect_rules:
+                    -   area_ratio:
+                        - 0
+                        - 0.015
+                        prob:
+                        - 0.941
+                        - 1
+                    -   prob:
+                        - 0
+                        - 0.941
+                    true_defect_rules: []
+                xuhan:
+                    fake_defect_rules:
+                    -   h_ratio:
+                        - 0
+                        - 0.23
+                        w_ratio:
+                        - 0
+                        - 0.25
+                    -   locations:
+                        -   - 1
+                            - 1
+                        -   - 1
+                            - 12
+                        w_ratio:
+                        - 0.6
+                        - 1.1
+                    -   prob:
+                        - 0
+                        - 0.92
+                    true_defect_rules: []
+                yinlie:
+                    fake_defect_rules:
+                    -   diag_ratio:
+                        - 0
+                        - 0.08
+                        prob:
+                        - 0.94
+                        - 1
+                    -   prob:
+                        - 0
+                        - 0.9
+                    true_defect_rules: []
+    dialog_of_equip_client_window_title: ''
+    el_result_dir: E:/hongpu/el_result
+    el_result_dir_2: ''
+    el_tracking_dir: E:/EL/Test
+    el_tracking_ingore_regexes: []
+    el_tracking_regexes: []
+    el_transfer_img:
+        dir: ''
+        keep_dir_structure: false
+        remove_origin_img: false
+    enable_calibration_setting: false
+    enable_close_dialog_of_equip_client_window: false
+    enable_equip_client_window_test: true
+    enable_equip_server: false
+    enable_send_text_to_equip_client_window: false
+    enable_send_virtualkey_to_equip_client_window: false
+    equip_client_window_title: ''
+    equipment_id: '1'
+    facility_id: M11
+    filter_overkilled:
+        enabled: false
+    flight: "\u767D\u73ED"
+    get_vi_result_timeout: 8
+    image_source:
+        cols: 12
+        edge_removed: true
+        flip_col_order: true
+        flip_row_order: false
+        half_plate: true
+        layout: 9BB
+        module_type: CS3K-P
+        monocrystal: true
+        rows: 1
+    io:
+        baudrate: 9600
+        enabled: true
+        output_duration: 0.05
+        port: COM9
+    keep_el_result_for_days: 7
+    move_module_file_to_specified_classification: false
+    old_file_4_tracking: 0
+    pre_process:
+    -   cell_cut_setting:
+            auto_algo: "EL\u57FA\u7840\u5207\u7247"
+            col_lines: []
+            mode: auto
+            row_lines: []
+        edge_cut_setting:
+            auto_algo: "EL\u57FA\u7840\u5207\u56FE"
+            bottom_left: []
+            bottom_right: []
+            mode: auto
+            top_left: []
+            top_right: []
+        file_name_reg: .*.jpg
+        name: "\u9ED8\u8BA4"
+        pixel_adjust:
+            brightness: 0
+            contrast: 1
+            enabled: false
+    product_line: L2
+    remove_slice_img: true
+    repair_full: 0
+    request_defect_result_timeout: 40
+    result_save:
+        save_missing: 1
+        save_ng: 1
+        save_ng_cell: 0
+        save_ng_with_box: 1
+        save_ok: 1
+        save_overkill: 0.1
+    secret_key:
+        configure_ciphers:
+            secret: lg2021
+            user: js
+    send_ok_ng_2_py:
+        directory: ''
+        enabled: none
+    serial_number_input:
+        enabled: true
+        max_per_component: 12
+    shifts:
+    -   day_shift: -1
+        end: '8:00'
+        name: "\u665A\u73ED"
+        start: 0:00
+    -   day_shift: 0
+        end: '20:00'
+        name: "\u767D\u73ED"
+        start: '8:00'
+    -   day_shift: 0
+        end: '24:00'
+        name: "\u665A\u73ED"
+        start: '20:00'
+    sleep_4_img_writing: 0.3
+    sleep_time_for_equip_client_window: 0.2
+    slice_mode:
+        TM_algorithm_on: true
+        algorithm: default
+        downsample_num: 2
+        enabled: false
+        flip_slice_col: false
+        flip_slice_index: false
+        flip_slice_row: false
+        h_flip: false
+        img_name_regex: (?P<module_id>.*)_(?P<slice_row>[1-4])_(?P<slice_col>[1-4])H?$
+        margin: 100
+        mask:
+            enabled: false
+            name: ''
+        perspective_parameters: perspective_ja_M1L3.pkl
+        perspective_slice_img_num: 0
+        pre_0_flip_enabled: true
+        save_module_pic: true
+        undistort_parameters: ''
+        v_flip: false
+    stage: chuanjian
+    station_info:
+        manufacturer: peide
+    timeout_for_activating_main_window: 8000
+    ui_btn_create_delete_edit: true
+    virtual_key_id_for_ng: 121
+    virtual_key_id_for_ok: 120
+    warning:
+        conditions_1:
+            defects_last: 2
+            enabled: true
+        conditions_2:
+            enabled: true
+            endurance_defects: 3
+            endurance_time: 0.5
+        warning_mode: warning
+    wg_saving_dir: ''
+    wg_tracking_dir: ''
+capture_station:
+    camera_num: 1
+    camera_order:
+    - 1
+    camera_type: greypoint
+    enabled: false
+    get_image_from_memory: true
+    need_save: false
+    sleep_time_for_capture: 0
+    sleep_time_for_fire: 2
+    sleep_time_for_start_capture: 1
+    sleep_time_for_the_lastest_captures: 3
+confirm_station:
+    confirm_button_num: 3
+    defect_selection:
+        auto_select: false
+        confirm_close: false
+        confirm_ok: false
+        defect_button_height: 30
+        defect_button_width: 140
+        el_defects_auto_selected:
+        -   code: "EL\u88C2\u7EB9\u88C2\u7247"
+            hotkey: '1'
+            label: "\u9690\u88C2"
+        -   code: "\u710A\u5E26\u6B63\u865A"
+            hotkey: '2'
+            label: "\u865A\u710A"
+        -   code: "\u6DF7\u6863"
+            hotkey: '3'
+            label: "\u6DF7\u6863"
+        -   code: "\u5176\u4ED6"
+            hotkey: '4'
+            label: "\u7834\u7247"
+        -   code: "\u65AD\u6805"
+            hotkey: '5'
+            label: "\u65AD\u6805"
+        -   code: "\u77ED\u8DEF"
+            hotkey: '6'
+            label: "\u77ED\u8DEF"
+        -   code: "\u5176\u4ED6"
+            hotkey: '7'
+            label: "\u8FC7\u710A"
+        -   code: "\u5176\u4ED6"
+            hotkey: '8'
+            label: "\u91CD\u62CD"
+        -   code: "\u5176\u4ED6"
+            hotkey: '9'
+            label: "\u5176\u4ED6"
+        el_defects_col_num: 6
+        el_defects_row_num: 4
+        enabled: false
+        force_sending_ok: false
+        position_button_height: 80
+        position_button_width: 60
+    demo: false
+    enable_camera_station: true
+    hotkey:
+        confirm_ng: F2
+        confirm_ok: F1
+        confirm_wg_ng: 5
+        confirm_wg_ok: 2
+        miss: f4
+        overkill: f5
+        wg: f6
+    save_module_pic: false
+    stack_graphics_view:
+        orientation: vertical
+        split_cols: 1
+        split_rows: 1
+    window:
+        is_on_top: false
+debug:
+    enabled: false
+    hub_perform_test: false
+    wait_for_next_image: 5
+el_defects:
+-   config: 0-7mm
+    name: yinlie
+    text: "\u9690\u88C2"
+    will_detect: true
+-   config: 5-10%
+    name: xuhan
+    text: "\u865A\u710A"
+    will_detect: true
+-   config: 5-10%
+    name: shixiao
+    text: "\u5931\u6548"
+    will_detect: true
+-   config: 5-10%
+    name: heipian
+    text: "\u9ED1\u7247"
+    will_detect: false
+-   config: 5-10%
+    name: heidian
+    text: "\u9ED1\u70B9"
+    will_detect: false
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: hundang
+    text: "\u6DF7\u6863"
+    will_detect: false
+-   config: 5-10%
+    name: rongsi
+    text: "\u7194\u4E1D"
+    will_detect: false
+-   config: 5-10%
+    name: duanshan
+    text: "\u65AD\u6805"
+    will_detect: false
+-   config: 5-10%
+    name: tongxinyuan
+    text: "\u540C\u5FC3\u5706"
+    will_detect: false
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: duanlu
+    text: "\u77ED\u8DEF"
+    will_detect: true
+-   config: 5-10%
+    name: liangban
+    text: "\u4EAE\u6591"
+    will_detect: false
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: wangluopian
+    text: "\u7F51\u7EDC\u7247"
+    will_detect: false
+-   config: 5-10%
+    name: quejiao
+    text: "\u7F3A\u89D2"
+    will_detect: true
+-   config: 5-10%
+    name: huahen
+    text: "\u5212\u75D5"
+    will_detect: false
+el_defects_longi:
+-   code: EL_Value1
+    label: "\u5934\u5C3E\u9690\u88C2"
+-   code: EL_Value2
+    label: "\u4E2D\u95F4\u9690\u88C2"
+-   code: EL_Value3
+    label: "\u80F6\u5E26\u4F4D\u7F6E\u9690\u88C2"
+-   code: EL_Value4
+    label: "\u8D77\u710A\u70B9\u9690\u88C2"
+-   code: EL_Value5
+    label: "\u6B63\u9762\u6536\u5C3E\u9690\u88C2"
+-   code: EL_Value6
+    label: "\u6298\u5F2F\u9690\u88C2"
+-   code: EL_Value7
+    label: "\u80CC\u7535\u6781\u9690\u88C2"
+-   code: EL_Value8
+    label: "\u4E3B\u6805\u9690\u88C2"
+-   code: EL_Value9
+    label: "\u7A7A\u767D\u53C9\u9690"
+-   code: EL_Value10
+    label: "\u7834\u7247"
+-   code: EL_Value11
+    label: "\u7535\u6C60\u7247\u865A\u710A"
+-   code: EL_Value12
+    label: "\u6C47\u6D41\u6761\u865A\u710A"
+-   code: EL_Value13
+    label: "\u710A\u5E26\u504F\u79FB"
+-   code: EL_Value14
+    label: "\u77ED\u8DEF"
+-   code: EL_Value15
+    label: "\u95F4\u8DDD\u4E0D\u826F"
+-   code: EL_Value16
+    label: "\u8FB9\u89D2\u9690\u88C2"
+-   code: EL_Value17
+    label: "\u5212\u4F24"
+-   code: EL_Value18
+    label: "\u65AD\u6805"
+-   code: EL_Value19
+    label: "\u6DF7\u6863(\u660E\u6697\u7247)"
+-   code: EL_Value20
+    label: "\u5F02\u7269"
+-   code: EL_Value21
+    label: "\u9ED1\u5C4F"
+-   code: EL_Value22
+    label: "\u5176\u5B83"
+-   code: EL_Value23
+    label: "\u7535\u6C60\u7247\u810F\u6C61"
+functions:
+    el: true
+    wg: false
+longji:
+    show_string_a_b: false
+mes:
+    enabled: false
+    mes_path_map: true
+    user_name: admin
+    wsdl: http://10.9.81.14:8085/ELData_Webservice/JobManagementWebService?wsdl
+opt:
+    enabled: false
+    host: 127.0.0.1
+    port: 8000
+plc:
+    debug:
+        enabled: false
+    enabled: false
+    high_current: false
+    io:
+        baudrate: 9600
+        enabled: false
+        output_duration: 1
+        port: com9
+    send_reduce_rank_message_in_cenghou: false
+    type: opt
+servers:
+    confirm_server: 127.0.0.1:8003
+    platform: 10.9.69.248:8101
+    station_server: 127.0.0.1:8002
+string_repair:
+    enabled: true
+    sleep_4_save_string_repair: 5
+vi_defects:
+    duanlu: EL_Value14
+    duanshan: EL_Value18
+    huahen: EL_Value17
+    shixiao: EL_Value10
+    xuhan: EL_Value11
+    yinlie: EL_Value1
+wg_camera_station:
+    ASIC_dir_structure: false
+    async_mode: true
+    component_recipe:
+        active_recipe: ''
+        recipe_list:
+        -   name: "\u793A\u4F8B\u4E00"
+            rules_by_class:
+                shouzhiyin:
+                -   conditions:
+                        area_ratio:
+                        - 0
+                        - 0.13
+                        prob:
+                        - 0
+                        - 0.9
+                    max_cells_per_compoment: 0
+                    max_defects_per_cell: 0
+                -   conditions:
+                        area_ratio:
+                        - 0
+                        - 0.15
+                        prob:
+                        - 0
+                        - 0.9
+                    max_cells_per_compoment: 0
+                    max_defects_per_cell: 1
+    confirm_mode: all
+    defect_recipe:
+        active_recipe: ''
+        code: ja1234
+        recipe_list:
+        -   name: "\u793A\u4F8B\u4E00"
+            rules_by_class:
+                shouzhiyin:
+                    fake_defect_rules:
+                    -   prob:
+                        - 0
+                        - 0.8
+                    true_defect_rules:
+                    -   prob:
+                        - 0.99
+                        - 1
+    dialog_of_equip_client_window_title: ''
+    el_result_dir: ''
+    el_result_dir_2: ''
+    el_transfer_img:
+        dir: ''
+        keep_dir_structure: false
+        remove_origin_img: false
+    enable_calibration_setting: false
+    enable_close_dialog_of_equip_client_window: false
+    enable_equip_client_window_test: true
+    enable_equip_server: false
+    enable_send_text_to_equip_client_window: false
+    enable_send_virtualkey_to_equip_client_window: false
+    equip_client_window_title: ''
+    equipment_id: '1'
+    facility_id: M11
+    filter_overkilled:
+        enabled: false
+    flight: "\u767D\u73ED"
+    image_source:
+        cols: 12
+        edge_removed: true
+        flip_col_order: false
+        flip_row_order: false
+        half_plate: "true# \u662F\u5426\u4E3A\u534A\u7247"
+        module_type: CS3K-P
+        monocrystal: false
+        rows: 1
+    io:
+        baudrate: 9600
+        enabled: true
+        output_duration: 1
+        port: COM3
+    keep_el_result_for_days: 7
+    move_module_file_to_specified_classification: false
+    old_file_4_tracking: 0
+    pre_process:
+    -   cell_cut_setting:
+            auto_algo: "\u5916\u89C2\u57FA\u7840\u5207\u7247"
+            col_lines: []
+            mode: auto
+            row_lines: []
+        edge_cut_setting:
+            auto_algo: "\u5916\u89C2\u57FA\u7840\u5207\u56FE"
+            bottom_left: []
+            bottom_right: []
+            mode: auto
+            top_left: []
+            top_right: []
+        file_name_reg: .*.jpg
+        name: "\u9ED8\u8BA4"
+        pixel_adjust:
+            brightness: 0
+            contrast: 1
+            enabled: false
+    product_line: L2
+    remove_slice_img: true
+    request_defect_result_timeout: 40
+    result_save:
+        save_missing: 1
+        save_ng: 1
+        save_ng_cell: 0
+        save_ng_with_box: 0
+        save_overkill: 0.1
+    send_ok_ng_2_py:
+        directory: ''
+        enabled: none
+    serial_number_input:
+        enabled: true
+        max_per_component: 12
+    shifts:
+    -   day_shift: -1
+        end: '8:00'
+        name: "\u665A\u73ED"
+        start: 0:00
+    -   day_shift: 0
+        end: '20:00'
+        name: "\u767D\u73ED"
+        start: '8:00'
+    -   day_shift: 0
+        end: '24:00'
+        name: "\u665A\u73ED"
+        start: '20:00'
+    sleep_4_img_writing: 0.3
+    sleep_time_for_equip_client_window: 0.2
+    slice_mode:
+        TM_algorithm_on: true
+        algorithm: default
+        downsample_num: 2
+        enabled: false
+        flip_slice_col: false
+        flip_slice_index: false
+        flip_slice_row: false
+        h_flip: false
+        img_name_regex: (?P<module_id>.*)_(?P<slice_row>[1-4])_(?P<slice_col>[1-4])H?$
+        margin: 100
+        mask:
+            enabled: false
+            name: ''
+        perspective_parameters: perspective_ja_M1L3.pkl
+        perspective_slice_img_num: 0
+        pre_0_flip_enabled: true
+        save_module_pic: false
+        undistort_parameters: ''
+        v_flip: false
+    stage: chuanjian
+    station_info:
+        manufacturer: peide
+    timeout_for_activating_main_window: 8000
+    ui_btn_create_delete_edit: true
+    virtual_key_id_for_ng: 121
+    virtual_key_id_for_ok: 120
+    wg_saving_dir: ''
+    wg_tracking_dir: /Users/leojiang/Desktop/test3
+    wg_tracking_ingore_regexes: []
+    wg_tracking_regexes: []
+wg_defects:
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: shouzhiyin
+    text: "\u624B\u6307\u5370"
+    will_detect: false
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: pidaiyin
+    text: "\u76AE\u5E26\u5370"
+    will_detect: false
+-   config: 5-10%
+    name: baidian
+    text: "\u767D\u70B9"
+    will_detect: false
+-   config: 5-10%
+    name: zhiyin
+    text: "\u6307\u5370"
+    will_detect: false
+-   config: 5-10%
+    name: huahen
+    text: "\u5212\u75D5"
+    will_detect: false
+-   config: 5-10%
+    name: yiwu
+    text: "\u5F02\u7269"
+    will_detect: false
+-   config: 0.5-1mm
+    name: chuan_max
+    text: "\u4E32\u95F4\u8DDD\u6700\u5927"
+    will_detect: false
+-   config: 0.5-1mm
+    name: chuan_min
+    text: "\u4E32\u95F4\u8DDD\u6700\u5C0F"
+    will_detect: false
+-   config: 0.5-1mm
+    name: pian_max
+    text: "\u7247\u95F4\u8DDD\u6700\u5927"
+    will_detect: false
+-   config: 0.5-1mm
+    name: pian_min
+    text: "\u7247\u95F4\u8DDD\u6700\u5C0F"
+    will_detect: false
+-   config: 5-10%
+    name: loubai
+    text: "\u9732\u767D"
+    will_detect: false
+-   config: 5-10%
+    name: tiaowai
+    text: "\u6761\u6B6A"
+    will_detect: false
+-   config: "\u4E0D\u5206\u7EA7\u533A\u5206"
+    name: hanniu
+    text: "\u710A\u626D"
+    will_detect: false
+wg_defects_longi:
+-   code: WG_Value1
+    label: "\u5F02\u7269"
+-   code: WG_Value2
+    label: "\u95F4\u8DDD\u4E0D\u826F"
+-   code: WG_Value3
+    label: "\u8272\u5DEE"
+-   code: WG_Value4
+    label: "\u9732\u767D"
+-   code: WG_Value5
+    label: "\u77ED\u8DEF"
+-   code: WG_Value6
+    label: "\u7535\u6C60\u7247\u65B9\u9635\u504F\u79FB"
+-   code: WG_Value7
+    label: "\u6574\u4F53\u504F\u79FB"
+-   code: WG_Value8
+    label: "\u6C47\u6D41\u6761\u504F\u79FB"
+-   code: WG_Value9
+    label: "\u5916\u89C2\u5176\u5B83"
+-   code: WG_Value10
+    label: "\u6F0F\u5BFC\u7535\u80F6"
+-   code: WG_Value11
+    label: "\u710A\u5E26\u8131\u843D"

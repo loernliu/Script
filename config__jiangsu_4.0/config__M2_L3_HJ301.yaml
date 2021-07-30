@@ -1,0 +1,1027 @@
+debug:
+    log_debug: false
+    exempt_password: false
+    exempt_detect: false
+servers:
+    confirm_server: 127.0.0.1:8003
+    data_hub: 10.9.69.248:8103
+secret_key:
+    configure_ciphers:
+        user: js
+        secret: lg2021
+    plugin_ciphers:
+        user: js
+        secret: lg2021
+hp_defects:
+-   color:
+    - 255
+    - 0
+    - 0
+    name: yinlie
+    text: "\u9690\u88C2"
+    class: el
+-   color:
+    - 255
+    - 192
+    - 0
+    name: xuhan
+    text: "\u865A\u710A"
+    class: el
+-   color:
+    - 254
+    - 204
+    - 255
+    name: shixiao
+    text: "\u5931\u6548"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: heipian
+    text: "\u9ED1\u7247"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: heidian
+    text: "\u9ED1\u70B9"
+    class: el
+-   color:
+    - 139
+    - 247
+    - 234
+    name: hundang
+    text: "\u6DF7\u6863"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: rongsi
+    text: "\u7194\u4E1D"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: duanshan
+    text: "\u65AD\u6805"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: tongxinyuan
+    text: "\u540C\u5FC3\u5706"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: duanlu
+    text: "\u77ED\u8DEF"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: liangban
+    text: "\u4EAE\u6591"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: wangluopian
+    text: "\u7F51\u7EDC\u7247"
+    class: el
+-   color:
+    - 255
+    - 150
+    - 0
+    name: quejiao
+    text: "\u7F3A\u89D2"
+    class: wg
+-   color:
+    - 255
+    - 150
+    - 0
+    name: huahen
+    text: "\u5212\u75D5"
+    class: el
+mes_defects:
+-   code: EL_Value1
+    label: "\u5934\u5C3E\u9690\u88C2"
+    class: el
+-   code: EL_Value2
+    label: "\u4E2D\u95F4\u9690\u88C2"
+    class: el
+-   code: EL_Value3
+    label: "\u80F6\u5E26\u4F4D\u7F6E\u9690\u88C2"
+    class: el
+-   code: EL_Value4
+    label: "\u8D77\u710A\u70B9\u9690\u88C2"
+    class: el
+-   code: EL_Value5
+    label: "\u6B63\u9762\u6536\u5C3E\u9690\u88C2"
+    class: el
+-   code: EL_Value6
+    label: "\u6298\u5F2F\u9690\u88C2"
+    class: el
+-   code: EL_Value7
+    label: "\u80CC\u7535\u6781\u9690\u88C2"
+    class: el
+-   code: EL_Value8
+    label: "\u4E3B\u6805\u9690\u88C2"
+    class: el
+-   code: EL_Value9
+    label: "\u7A7A\u767D\u53C9\u9690"
+    class: el
+-   code: EL_Value10
+    label: "\u7834\u7247"
+    class: el
+-   code: EL_Value11
+    label: "\u7535\u6C60\u7247\u865A\u710A"
+    class: el
+-   code: EL_Value12
+    label: "\u6C47\u6D41\u6761\u865A\u710A"
+    class: el
+-   code: EL_Value13
+    label: "\u710A\u5E26\u504F\u79FB"
+    class: el
+-   code: EL_Value14
+    label: "\u77ED\u8DEF"
+    class: el
+-   code: EL_Value15
+    label: "\u95F4\u8DDD\u4E0D\u826F"
+    class: el
+-   code: EL_Value16
+    label: "\u8FB9\u89D2\u9690\u88C2"
+    class: el
+-   code: EL_Value17
+    label: "\u5212\u4F24"
+    class: el
+-   code: EL_Value18
+    label: "\u65AD\u6805"
+    class: el
+-   code: EL_Value19
+    label: "\u6DF7\u6863(\u660E\u6697\u7247)"
+    class: el
+-   code: EL_Value20
+    label: "\u5F02\u7269"
+    class: el
+-   code: EL_Value21
+    label: "\u9ED1\u5C4F"
+    class: el
+-   code: EL_Value22
+    label: "\u5176\u5B83"
+    class: el
+-   code: EL_Value23
+    label: "\u7535\u6C60\u7247\u810F\u6C61"
+    class: el
+-   code: EL_Value24
+    label: QA
+    class: el
+-   code: EL_Value25
+    label: QB
+    class: el
+wg_defects:
+-   code: WG_Value1
+    label: "\u5F02\u7269"
+-   code: WG_Value2
+    label: "\u95F4\u8DDD\u4E0D\u826F"
+-   code: WG_Value3
+    label: "\u8272\u5DEE"
+-   code: WG_Value4
+    label: "\u9732\u767D"
+-   code: WG_Value5
+    label: "\u77ED\u8DEF"
+-   code: WG_Value6
+    label: "\u7535\u6C60\u7247\u65B9\u9635\u504F\u79FB"
+-   code: WG_Value7
+    label: "\u6574\u4F53\u504F\u79FB"
+-   code: WG_Value8
+    label: "\u6C47\u6D41\u6761\u504F\u79FB"
+-   code: WG_Value9
+    label: "\u5916\u89C2\u5176\u5B83"
+-   code: WG_Value10
+    label: "\u6F0F\u5BFC\u7535\u80F6"
+-   code: WG_Value11
+    label: "\u710A\u5E26\u8131\u843D"
+vi_defects_map:
+    yinlie: EL_Value1
+    xuhan: EL_Value11
+    huahen: EL_Value17
+    shixiao: EL_Value10
+    duanshan: EL_Value18
+    duanlu: EL_Value14
+event_plugins_binds:
+-   event: NoEvent
+    plugins:
+    -   name: PerfTestStationUIPlugin
+        enabled: false
+        mode: sync
+        options:
+            tab_name: "\u6027\u80FD\u6D4B\u8BD5"
+            tab_panel_pos: 1
+            tool_bar_pos: 5
+        priority: 59
+        config:
+            el_tracking_dir: C:/Users/C30/Desktop/test3
+            el_dest_dir: C:/Users/C30/Desktop/test_el
+            wg_tracking_dir: ''
+            wg_dest_dir: ''
+            sleep_per_img: 0.1
+            sleep_per_comp: 0.5
+    -   config:
+            baudrate: 9600
+            offline_warning: true
+            port: COM6
+            y0_delay_time: 1
+            y1_delay_time: 1
+            y2_delay_time: 1
+            y3_delay_time: 15
+        enabled: true
+        mode: sync
+        name: IO44Plugin
+        priority: 59
+    -   config:
+            bar_length: 12
+            capture_focus: false
+            serial_length_check: true
+        enabled: true
+        mode: sync
+        name: BarCodeScannerLineEdit
+        options:
+            status_bar_pos: 2
+        priority: 59
+    -   config:
+            bar_length: 0
+            baudrate: 9600
+            port: com5
+        enabled: true
+        mode: sync
+        name: BarCodeScannerCom
+        priority: 59
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: ServersSettingUIPlugin
+        options:
+            tab_name: "\u673A\u53F0"
+            tab_panel_pos: 3
+        priority: 59
+    -   config:
+            edit_defect_btn: false
+            graphics_view_background_color: (50, 50, 50)
+            grid_font_color: (255, 255, 255)
+            grid_font_size: 40
+            station_btn_width: 70
+            functions:
+                el: true
+                wg: false
+                twg: false
+            defect_box_thickness: 5
+            defect_pixel_offset: 15
+            force_clear_view_on_confirm: true
+            stack_graphics_view:
+                orientation: vertical
+                split_cols: 1
+                split_rows: 1
+            station_warning_timeout_enabled: false
+            station_warning_timeout: 120
+            display_defects_name: false
+            defects_name_font_size: 40
+            defect_box_enlarge: false
+        enabled: true
+        mode: sync
+        name: ConfirmStationPlugin
+        options:
+            tool_bar_pos: 10
+        priority: 59
+    -   config:
+            keep_el_result_for_days: 7
+            keep_mes_pic_for_days: 7
+        enabled: true
+        mode: sync
+        name: DeletOverduePicPlugin
+        priority: 100
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: SiteStationIdSettingPlugin
+        options:
+            tab_name: "\u673A\u53F0"
+            tab_panel_pos: 1
+        priority: 100
+    -   config:
+            tracking_dir: E:/EL/Test
+            tracking_ingore_regexes: []
+            tracking_regexes: []
+            wait_4_img_writing: 0.3
+        enabled: true
+        mode: sync
+        name: WatchDogCameraPlugin
+        options:
+            tab_name: "\u68C0\u6D4B"
+            tab_panel_pos: 1
+        priority: 100
+    -   config:
+            servers:
+                mission_hub: 10.9.69.248:8101
+                station_server: 127.0.0.1:8002
+            detect_defects:
+            - yinlie
+            - xuhan
+            - shixiao
+            - duanlu
+            async_mode: false
+            auto_commit_enabled: false
+            send_img_to_confirm_station: true
+            auto_commit_time_out: 15
+            manual_detection: false
+            image_source:
+                chamfer_direction: l
+                cols: 12
+                flip_col_order: false
+                flip_row_order: false
+                half_plate: true
+                layout: 9BB
+                module_type: CS3K-P
+                monocrystal: true
+                rows: 1
+                img_class: el
+            io_port_ng: 1
+            io_port_ok: 0
+            confirm_mode: none
+            flip_col_order: true
+        enabled: true
+        mode: sync
+        name: CameraStationPlugin
+        options:
+            tab_name: "\u68C0\u6D4B"
+            tab_panel_pos: 2
+        priority: 100
+    -   config:
+            defect_selection:
+                confirm_close: false
+                confirm_ok: false
+                defect_button_height: 30
+                defect_button_width: 140
+                el_defects_col_num: 6
+                enabled: false
+                font_size: 20
+                position_button_height: 80
+                position_button_width: 60
+                row_labels: ABCDEF
+                tile_display: true
+                tab_title_font_size: 18
+            hotkey_confirm_ng: F2
+            hotkey_confirm_ok: F1
+            taizhou_ng_confirm: false
+            display_confirm_ai_button: false
+            hotkey_confirm_ai: F3
+            jaa_button:
+                enabled: false
+                hotkey: F4
+        enabled: true
+        mode: sync
+        name: ConfirmTools2Button
+        options:
+            tool_bar_pos: 20
+        priority: 100
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: VIResultReportToolButton
+        options:
+            tool_bar_pos: 30
+        priority: 100
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: PluginSettingToolButton
+        options:
+            tool_bar_pos: 1
+        priority: 100
+-   event: RawImageAquired
+    plugins:
+    -   config: {}
+        enabled: false
+        mode: sync
+        name: StandardRawImageToViImagePlugin
+        priority: 100
+    -   config: {}
+        enabled: false
+        mode: sync
+        name: LGJSCJRawImageToViImagePlugin
+        priority: 100
+    -   config: {}
+        enabled: false
+        mode: sync
+        name: JAYZCJRawImageToViImagePlugin
+        priority: 100
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: ATSDFCJRawImageToViImagePlugin
+        priority: 100
+-   event: ComposeVIItem
+    plugins:
+    -   config:
+            cols_in_sections:
+            - 12
+            flip_slice_col: false
+            flip_slice_row: false
+            img_name_regex: (.*)_([0-9]\d?)$
+            rows_in_section: 1
+            section_num:
+            - 1
+            - 1
+        enabled: true
+        mode: sync
+        name: BaseSectionInfoPlugin
+        priority: 10
+    -   config:
+            shifts:
+            -   day_shift: -1
+                end: '8:00'
+                name: "\u665A\u73ED"
+                start: 0:00
+            -   day_shift: 0
+                end: '20:00'
+                name: "\u767D\u73ED"
+                start: '8:00'
+            -   day_shift: 0
+                end: '24:00'
+                name: "\u665A\u73ED"
+                start: '20:00'
+            font_style:
+                color: (0, 0, 0)
+                size: 24
+        enabled: true
+        mode: sync
+        name: ShiftInfoPlugin
+        priority: 20
+-   event: VI_ImageChanged
+    plugins:
+    -   config:
+            show_string_a_b: false
+            font_style:
+                color: (0, 0, 0)
+                size: 24
+        enabled: true
+        mode: sync
+        name: ModuleIdLabelUIPlugin
+        options:
+            status_bar_pos: 1
+        priority: 20
+-   event: VIImagePreprocess
+    plugins:
+    -   config:
+            undistort_parameters: ''
+        enabled: false
+        mode: sync
+        name: ImageUndistortPlugin
+        options:
+            tab_name: "\u9884\u5904\u7406"
+            tab_panel_pos: 1
+        priority: 10
+    -   config:
+            h_flip: false
+            v_flip: false
+        enabled: false
+        mode: sync
+        name: ImageFlipPlugin
+        priority: 20
+    -   config:
+            brightness: 0
+            contrast: 1
+        enabled: false
+        mode: sync
+        name: ImageGrayScalingPlugin
+        priority: 30
+-   event: VIPreprocess
+    plugins:
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: StandardAreaTypePlugin
+        priority: 50
+    -   config:
+            margin: 50
+            remove_black_margin: true
+        enabled: false
+        mode: sync
+        name: AutoELComEdgeCutPlugin
+        priority: 20
+    -   config:
+            bottom_left:
+            - 7
+            - 587
+            bottom_right:
+            - 3831
+            - 579
+            margin: 50
+            remove_black_margin: true
+            top_left:
+            - 7
+            - 12
+            top_right:
+            - 3830
+            - 11
+        enabled: true
+        mode: sync
+        name: ManualComEdgeCutPlugin
+        options:
+            tab_name: "\u9884\u5904\u7406"
+            tab_panel_pos: 10
+        priority: 20
+    -   config:
+            margin: 0
+            perspective_parameters: new_param_1_2.pkl
+            remove_black_margin: false
+            cell_height: 500
+            cell_width: 250
+            edge_cut_fine_tuning: false
+        enabled: false
+        mode: sync
+        name: ManualSliceEdgeCutPlugin
+        options:
+            tab_name: "\u9884\u5904\u7406"
+            tab_panel_pos: 20
+        priority: 20
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: BaseELCellCutPlugin
+        priority: 30
+-   event: AfterVIDetect
+    plugins:
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: DeleteImagePlugin
+        priority: 10
+-   event: AfterComposeVIResult
+    plugins:
+    -   config:
+            corner: bl
+            font_size: 1
+            offset_x: 20
+            offset_y: -20
+        enabled: true
+        mode: sync
+        name: StandardWaterMarkPlugin
+        priority: 10
+-   event: ComposeVIResult
+    plugins:
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: StandardComposeVISectionPlugin
+        priority: 10
+-   event: VIPostprocess
+    plugins:
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: DeleteOverlappedShixiaoPlugin
+        priority: 5
+    -   config:
+            defect_recipe:
+                active_recipe: sb
+                code: ja965874
+                recipe_list:
+                -   name: cj
+                    rules_by_class:
+                        huahen:
+                            fake_defect_rules:
+                            -   prob:
+                                - 0
+                                - 0.941
+                            -   diag_ratio:
+                                - 0
+                                - 0.315
+                                prob:
+                                - 0.941
+                                - 1
+                            true_defect_rules: []
+                        shixiao:
+                            fake_defect_rules:
+                            -   area_ratio:
+                                - 0
+                                - 0.015
+                                prob:
+                                - 0.941
+                                - 1.0
+                            -   prob:
+                                - 0
+                                - 0.941
+                            true_defect_rules: []
+                        xuhan:
+                            fake_defect_rules:
+                            -   edge_dist_ratio_min_ver:
+                                - 0.3
+                                - 0.6
+                                locations:
+                                -   - 1
+                                    - 1
+                                -   - 1
+                                    - 12
+                                w_ratio:
+                                - 0.45
+                                - 1
+                            -   h_ratio:
+                                - 0
+                                - 0.2
+                                locations:
+                                -   - 1
+                                    - 1
+                                -   - 1
+                                    - 12
+                                w_ratio:
+                                - 0
+                                - 0.25
+                            -   edge_dist_ratio_min:
+                                - 0.033
+                                - 1
+                                h_ratio:
+                                - 0
+                                - 0.176
+                                prob:
+                                - 0.89
+                                - 1
+                                w_ratio:
+                                - 0
+                                - 0.25
+                            -   edge_dist_ratio_min:
+                                - -1
+                                - 0.033
+                                h_ratio:
+                                - 0
+                                - 0.176
+                                prob:
+                                - 0.89
+                                - 1
+                                w_ratio:
+                                - 0
+                                - 0.25
+                            -   locations:
+                                -   - 1
+                                    - 1
+                                -   - 1
+                                    - 12
+                                w_ratio:
+                                - 0.45
+                                - 1.1
+                            -   prob:
+                                - 0
+                                - 0.89
+                            true_defect_rules: []
+                        yinlie:
+                            fake_defect_rules:
+                            -   prob:
+                                - 0
+                                - 0.95
+                            true_defect_rules: []
+                -   name: "\u96F6\u9690\u88C2"
+                    rules_by_class:
+                        huahen:
+                            fake_defect_rules:
+                            -   diag_ratio:
+                                - 0
+                                - 0.15
+                                prob:
+                                - 0.941
+                                - 1
+                            -   prob:
+                                - 0
+                                - 0.941
+                            true_defect_rules: []
+                        shixiao:
+                            fake_defect_rules:
+                            -   area_ratio:
+                                - 0
+                                - 0.0065
+                                prob:
+                                - 0.941
+                                - 1
+                            -   prob:
+                                - 0
+                                - 0.941
+                            true_defect_rules: []
+                        xuhan:
+                            fake_defect_rules:
+                            -   locations:
+                                -   - 1
+                                    - 1
+                                -   - 1
+                                    - 12
+                                w_ratio:
+                                - 0.4
+                                - 1.1
+                            -   prob:
+                                - 0
+                                - 0.89
+                            true_defect_rules: []
+                        yinlie:
+                            fake_defect_rules:
+                            -   prob:
+                                - 0
+                                - 0.94
+                            true_defect_rules: []
+                -   name: sb
+                    rules_by_class:
+                        huahen:
+                            fake_defect_rules:
+                            -   prob:
+                                - 0
+                                - 0.94
+                            -   diag_ratio:
+                                - 0
+                                - 0.6
+                                prob:
+                                - 0.94
+                                - 1
+                            true_defect_rules: []
+                        shixiao:
+                            fake_defect_rules:
+                            -   area_ratio:
+                                - 0
+                                - 0.015
+                                prob:
+                                - 0.941
+                                - 1.0
+                            -   prob:
+                                - 0
+                                - 0.941
+                            true_defect_rules: []
+                        xuhan:
+                            fake_defect_rules:
+                            -   h_ratio:
+                                - 0
+                                - 0.24
+                                w_ratio:
+                                - 0
+                                - 0.25
+                            -   locations:
+                                -   - 1
+                                    - 1
+                                -   - 1
+                                    - 12
+                                w_ratio:
+                                - 0.7
+                                - 1.1
+                            -   prob:
+                                - 0
+                                - 0.92
+                            true_defect_rules: []
+                        yinlie:
+                            fake_defect_rules:
+                            -   diag_ratio:
+                                - 0
+                                - 0.08
+                            -   prob:
+                                - 0
+                                - 0.941
+                            true_defect_rules: []
+        enabled: true
+        mode: sync
+        name: DefectRecipePlugin
+        options:
+            tab_name: "\u68C0\u6D4B"
+            tab_panel_pos: 4
+        priority: 10
+    -   config:
+            component_recipe:
+                active_recipe: ''
+                recipe_list:
+                -   name: "\u793A\u4F8B\u4E00"
+                    rules_by_class:
+                        yinlie:
+                        -   conditions:
+                                area_ratio:
+                                - 0
+                                - 0.13
+                                prob:
+                                - 0
+                                - 0.9
+                            max_cells_per_compoment: 0
+                            max_defects_per_cell: 0
+                        -   conditions:
+                                area_ratio:
+                                - 0
+                                - 0.15
+                                prob:
+                                - 0
+                                - 0.9
+                            max_cells_per_compoment: 0
+                            max_defects_per_cell: 1
+        enabled: true
+        mode: sync
+        name: ComponentRecipePlugin
+        options:
+            tab_name: "\u68C0\u6D4B"
+            tab_panel_pos: 4
+        priority: 20
+    -   config: {}
+        enabled: true
+        mode: sync
+        name: YinlieSubclassPlugin
+        priority: 15
+    -   config:
+            jaa_recipe:
+                active_recipe: ''
+                recipe_list:
+                -   name: "\u793A\u4F8B\u4E00"
+                    rules_by_class: {}
+        enabled: false
+        mode: sync
+        name: JaaRecipePlugin
+        priority: 25
+    -   config:
+            auto_ng_recipe:
+                active_recipe: ''
+                recipe_list:
+                -   name: "\u793A\u4F8B\u4E00"
+                    rules_by_class: {}
+        enabled: false
+        mode: sync
+        name: AutoNgRecipePlugin
+        priority: 25
+-   event: OutputVIResult
+    plugins:
+    -   config:
+            io_port: 2
+            repair_full: 0
+            sleep_4_save_string_repair: 5
+            string_margin_tag: 0
+        enabled: true
+        mode: async
+        name: StringRepairPlugin
+        options:
+            status_bar_pos: 3
+        priority: 100
+    -   config:
+            conditions_1: true
+            conditions_2: true
+            count_a_b: false
+            defects_last: 2
+            endurance_defects: 3
+            endurance_time: 0.5
+            io_port_a: 2
+            io_port_b: 3
+        enabled: true
+        mode: async
+        name: DefectWarningPlugin
+        options:
+            tool_bar_pos: 15
+        priority: 100
+    -   config:
+            jaa_statistic: false
+        enabled: true
+        mode: sync
+        name: OkNgStatisticUIPlugin
+        options:
+            tool_bar_pos: 1
+            tool_bar_side: right
+        priority: 100
+    -   config:
+            save_directory: E:/hongpu/el_result
+            save_missing: 1.0
+            save_ng: 1.0
+            save_ng_cell: 0.0
+            save_ng_with_box: 1.0
+            save_ok: 1.0
+            save_ok_with_box: 0.0
+            save_overkill: 0.1
+            defect_box_thickness: 5
+            defect_pixel_offset: 15
+            save_jaa_with_box: 0.0
+            save_jaa: 0.0
+            is_save_ok_defects: false
+        enabled: true
+        mode: async
+        name: SaveLocalResultPlugin
+        options: {}
+        priority: 60
+    -   config: {}
+        enabled: true
+        mode: async
+        name: SavePlatResultPlugin
+        options: {}
+        priority: 60
+    -   config:
+            pvmi_server: 192.168.3.145:18001
+            sub_class_config:
+                sub_config_xuhan:
+                    penetration_process:
+                        switch: true
+                        threshold: 50
+                    chamfer_process:
+                        switch: true
+                        threshold: 20
+                        chamfer_direction: r
+                    up_down_process:
+                        switch: true
+                        threshold: 20
+                    position_process:
+                        switch: true
+                        threshold: 0
+                    large_area_process:
+                        switch: true
+                        threshold: 2
+                    cell_loc_process:
+                        switch: true
+                    cell_jiou_loc_process:
+                        switch: true
+                    dengguan_loc_process:
+                        switch: true
+                        threshold: 20
+                    liangban_chamfer_process:
+                        switch: true
+                        threshold: 20
+                    cy_process:
+                        switch: true
+                sub_config_yinlie:
+                    centerpoint_process:
+                        switch: true
+                    yinlie_shape_process:
+                        switch: true
+                    yinlie_grid_process:
+                        switch: true
+                    cell_loc_process:
+                        switch: true
+                    penetration_process:
+                        switch: true
+                        threshold: 50
+                    chamfer_process:
+                        switch: true
+                        threshold: 20
+                        chamfer_direction: r
+                    up_down_process:
+                        switch: true
+                        threshold: 20
+                    corner_process:
+                        switch: true
+                        threshold: 20
+                    yazhen_position_process:
+                        switch: true
+                        threshold: 20
+                    slxp_position_process:
+                        switch: true
+                        threshold: 20
+                    jqrxp_position_process:
+                        switch: true
+                        threshold: 20
+                    qplz_position_process:
+                        switch: true
+                        threshold: 20
+                    bplz_position_process:
+                        switch: true
+                        threshold: 20
+        enabled: false
+        mode: async
+        name: SavePVMIResultPlugin
+        priority: 50
+-   event: ErrStatusChanged
+    plugins:
+    -   config:
+            font_style:
+                color: (255, 0, 0)
+                size: 24
+        enabled: true
+        mode: sync
+        name: ErrorReportUIPlugin
+        priority: 10
+-   event: VI_ManualConfirmed
+    plugins:
+    -   config:
+            save_directory: ''
+        enabled: false
+        mode: sync
+        name: SaveLocalConfirmResultPlugin
+        priority: 5
+-   event: VIDetect
+    plugins:
+    -   config:
+            get_vi_result_timeout: 8.0
+        enabled: false
+        mode: sync
+        name: VIDetectByMQ
+        priority: 59
+    -   config:
+            get_vi_result_timeout: 8.0
+        enabled: true
+        mode: sync
+        name: VIDetectByWS
+        priority: 59
+version: 18
+main_windows:
+-   type: main
+    is_on_top: false
+    tool_bar_style:
+        background_color: (64,64,64)
