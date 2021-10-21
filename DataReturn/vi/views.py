@@ -37,28 +37,28 @@ def return_data(request):
             delete_result = REDIS_MGR.redis_cache.delete(str(img_cache_key))
             logging.info('删除图像缓存%s is %s', el_data.img_info.img_name, delete_result)
     """
-    data_list.append({'error': 'algorithm failure', 'vi_result': 'null'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [{"class": "xuhan", "prob": 0.999, "loc": [1, 2], "coord": [600, 100, 700, 200]}], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': 'algorithm failure', 'vi_result': 'null'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [{"class": "xuhan", "prob": 0.999, "loc": [1, 2], "coord": [600, 100, 700, 200]}], "is_ng": false, "ext_info": {}}}'})
     data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [{"class": "xuhan", "prob": 0.999, "loc": [2, 1], "coord": [400, 200, 500, 300]}], "is_ng": false, "ext_info": {}}}'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
-    data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
+    # data_list.append({'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [], "is_ng": false, "ext_info": {}}}'})
     # data_list.append({'error': 'redis connection failure', 'vi_result': 'null'})
     res = random.choice(data_list)
     print(res)
-    time.sleep(random.randint(0, 15))
+    # time.sleep(random.randint(0, 15))
     return JsonResponse(res, safe=False)
 
 
 def data_return1(request):
     # res = {'error': '', 'vi_result': '{"__type__": "DictData", "cls_name": "VIResult", "value": {"error": "", "defects": [{"class": "heidian", "prob": 0.8296175599098206, "loc": [3, 9], "coord": [2558, 1838, 2839, 1854]}], "is_ng": false, "ext_info": {}}}'}
     res = {'111': 111}
-    temp = random.randint(0, 13)
-    print(temp)
+    # temp = random.randint(0, 13)
+    # print(temp)
     # time.sleep(temp)
-    return JsonResponse(res, safe=False)
+    return "succ"
 
 
 def data_return2(request):
