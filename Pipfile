@@ -10,6 +10,9 @@ pywin32 = "*"
 requests = "*"
 ipython = "*"
 jedi = "==0.17.2"
+pyside6 = "*"
+fire = "*"
+pyqt5 = "*"
 
 [dev-packages]
 flake8 = "*"
