@@ -1,10 +1,21 @@
 import sys
-import fire
+from enum import Enum
 
-from PySide6.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QMainWindow, QGraphicsPixmapItem, QGraphicsItem,
-                               QGraphicsView, QGraphicsScene)
-from PySide6.QtCore import Qt, QPointF
-from PySide6.QtGui import QColor, QPainterPath, QPen, QPixmap, QImage, QPainter, QBrush, QScreen
+import fire
+from PyQt5.QtCore import QPointF, Qt
+from PyQt5.QtGui import (QBrush, QColor, QImage, QPainter, QPainterPath, QPen,
+                         QPixmap, QScreen)
+from PyQt5.QtWidgets import (QApplication, QGraphicsItem, QGraphicsPixmapItem,
+                             QGraphicsScene, QGraphicsView, QHBoxLayout,
+                             QMainWindow, QVBoxLayout, QWidget)
+from system_hotkey import SystemHotkey
+
+
+class Zoom(Enum):
+    Original = "原图"
+    In = "缩小"
+    Out = "放大"
+    Fit = "自适应"
 
 
 class GraphicsPixmapItem(QGraphicsPixmapItem):
@@ -12,7 +23,7 @@ class GraphicsPixmapItem(QGraphicsPixmapItem):
 
     def __init__(self):
         super().__init__()
-        self.setTransformationMode(Qt.SmoothTransformation)
+        # self.setTransformationMode(Qt.SmoothTransformation)
 
     def update(self):
 
@@ -83,14 +94,18 @@ class GraphicsView(QGraphicsView):
     def __init__(self):
         super().__init__()
         self.scene = GraphicsScene()
+        self.scene_box = QGraphicsScene()
         self.setScene(self.scene)
+        # hk = SystemHotkey(check_queue_interval=1)
+        # hk.register(['control', 'k'], callback=lambda x:self.reject())
 
         # self.setSceneRect(0, 0, _w, _h)
         # self.fitInView(self.scene.sceneRect(), Qt.KeepAspectRatio)
         self.setRenderHints(QPainter.Antialiasing | QPainter.SmoothPixmapTransform)
 
-        self.scene.setBackgroundBrush(QBrush(QColor(50, 50, 50), Qt.SolidPattern))
+        self.scene_box.setBackgroundBrush(QBrush(QColor(50, 50, 50), Qt.SolidPattern))
         self.item = GraphicsPixmapItem()
+        self.item.setTransformationMode(Qt.SmoothTransformation)
         self.scene.addItem(self.item)
 
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
@@ -98,17 +113,25 @@ class GraphicsView(QGraphicsView):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
+    # def wheelEvent(self, event):
+    #     zoom_in_factor = 1.25
+    #     zoom_out_factor = 0.8
+
+    #     if event.angleDelta().y() > 0:
+    #         zoom_factor = zoom_in_factor
+    #     else:
+    #         zoom_factor = zoom_out_factor
+
+    #     self.scale(zoom_factor, zoom_factor)
+
     def wheelEvent(self, event):
-        zoom_in_factor = 1.25
-        zoom_out_factor = 1 / zoom_in_factor
+        # https://github.com/manisandro/gImageReader/releases?page=1
+        self.set_zoom(Zoom.In if event.delta() > 0 else Zoom.Out)
+        event.accept()
 
-        # if event.delta() > 0:
-        if event.angleDelta().y() > 0:
-            zoom_factor = zoom_in_factor
-        else:
-            zoom_factor = zoom_out_factor
+    def set_zoom(self, action):
 
-        self.scale(zoom_factor, zoom_factor)
+        pass
 
     def set_fit_window(self):
         """missing docstring"""
@@ -119,29 +142,24 @@ class GraphicsView(QGraphicsView):
         """missing docstring"""
         self.item.update()
         print('mouseDouble')
-        print(self.scene.sceneRect())
-        scene_box = QGraphicsScene()
-        img_box = QImage(self.scene.sceneRect().size().toSize(), QImage.Format_RGB16)
-        painter = QPainter(img_box)
-        painter.setRenderHints(QPainter.SmoothPixmapTransform)
-        self.scene.render(painter)
-        img = img_box.scaledToWidth(3000, Qt.SmoothTransformation)
-        painter.end()
-        print("img_box:%s", img)
-        img.save("2222222222222.jpg")
-        pixmap = QPixmap(img)
-        # pixmap.fromImage(img_box)
-        print("pixmap:", pixmap)
-        print('isActive:', painter.isActive())
-        # pixmap = pixmap.scaledToWidth(3000, Qt.SmoothTransformation)
-        # print("pixmap:", pixmap)
-        scene_box.addPixmap(pixmap)
-        print('===============')
-        print(scene_box.width())
-        self.setScene(scene_box)
+        # print(self.scene.sceneRect())
+
+        # self.img_box = QImage(self.scene.sceneRect().size().toSize(), QImage.Format_RGB16)
+        # painter = QPainter(self.img_box)
+        # painter.setRenderHints(QPainter.SmoothPixmapTransform)
+        # self.scene.render(painter)
+        # img = self.img_box.scaledToWidth(3000, Qt.SmoothTransformation)
+        # painter.end()
+        # pixmap = QPixmap(img)
+        # self.scene_box.addPixmap(pixmap)
+
+        # self.setScene(self.scene_box)
 
         self.set_fit_window()
         super().mouseDoubleClickEvent(event)
+
+    def reject(self):
+        print('11111')
 
 
 def main():
@@ -158,8 +176,8 @@ def main():
     layout.setSpacing(0)
     layout.setContentsMargins(0, 0, 0, 0)
 
-    screen = QScreen()
-    print('size:', screen.primaryOrientation())
+    # screen = QScreen()
+    # print('size:', screen.primaryOrientation())
 
     view = GraphicsView()
     layout.addWidget(view)
