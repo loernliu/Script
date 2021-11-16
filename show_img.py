@@ -1,10 +1,17 @@
+from cmath import pi
+import imp
 import sys
 from enum import Enum
+from queue import Queue
+from tkinter import Scale
+from urllib import request
+from cv2 import transform
 
 import fire
-from PyQt5.QtCore import QPointF, Qt
-from PyQt5.QtGui import (QBrush, QColor, QImage, QPainter, QPainterPath, QPen,
-                         QPixmap, QScreen)
+
+from PyQt5.QtCore import QPointF, QRectF, Qt, QThread, QTimer, QMutex, QWaitCondition, QMetaObject, Q_ARG, pyqtSlot, QByteArray, QIODevice, QBuffer
+from PyQt5.QtGui import (QBrush, QColor, QImage, QPainter, QPainterPath, QPen, QImageReader,
+                         QPixmap, QScreen, QTransform)
 from PyQt5.QtWidgets import (QApplication, QGraphicsItem, QGraphicsPixmapItem,
                              QGraphicsScene, QGraphicsView, QHBoxLayout,
                              QMainWindow, QVBoxLayout, QWidget)
@@ -18,55 +25,86 @@ class Zoom(Enum):
     Fit = "自适应"
 
 
+class HPStruct:
+    '''Struct从字典构造对象
+    obj = HPStruct({'a':1, 'b':2})
+    obj = HPStruct(a=1, b=2)
+    obj.a==1
+    obj.b==2
+    '''
+    def __init__(self, *args, **kwargs):
+        for arg in args:
+            if isinstance(arg, dict):
+                self.__dict__.update(arg)
+        self.__dict__.update(kwargs)
+
+
+class ScaleRequest:
+    type = Enum("type", ("Scale", "Abort", "Quit"))
+    def __init__(self):
+        self.scale = float()
+        # self.resolution = int()
+
+
+class ScaleThread(QThread):
+    def __init__(self, func):
+        super().__init__()
+        self.func = func
+
+    def run(self) -> None:
+        self.func()
+
+
 class GraphicsPixmapItem(QGraphicsPixmapItem):
     '''图像'''
 
     def __init__(self):
+        self._pixmap = QPixmap()
+        self._img_bytes = None
         super().__init__()
         # self.setTransformationMode(Qt.SmoothTransformation)
+        with open(r'D:\test\twg\20211018172755.jpg', 'rb') as f:
+            self._img_bytes = f.read()
+        
+
+    # @property.setter
+    # def pixmap(self, pixmap):
+    #     if isinstance(pixmap, QPixmap):
+    #         self._pixmap = pixmap
+
+    @property
+    def pixmap(self):
+        return self._pixmap
+
+    @property
+    def img_bytes1(self):
+        return self._img_bytes
+
+    def img_reader(self, resolution):
+        ba = QByteArray(self._img_bytes)
+        buf = QBuffer(ba)
+        buf.open(QBuffer.ReadOnly)
+        self._img_reader = QImageReader(buf)
+        self._img_reader.setScaledSize(self._img_reader.size() * resolution / 100.0)
+        print(f"00000000000000000{self._img_reader.size()}")
+        return self._img_reader.read().convertToFormat(QImage.Format_RGB32)
+
 
     def update(self):
 
-        with open(r'D:\test\twg\20211018172755.jpg', 'rb') as f:
-            img_bytes = f.read()
-        pixmap = QPixmap()
-        pixmap.loadFromData(img_bytes)
+        
+        img = self.img_reader(200)
+        # print(f"type(img):{type(img)}")
+        self._pixmap = self._pixmap.fromImage(img)
         # pixmap = pixmap.scaledToWidth(3000, Qt.SmoothTransformation)
-        self.setPixmap(pixmap)
-        # self.setPixmap(QPixmap.fromImage(QImage.fromData(img_bytes)))
+        self.setPixmap(self.pixmap)
+        self.setScale(1.)
+        self.setTransformOriginPoint(self.boundingRect().center())
+        self.setPos(self.pos() - self.sceneBoundingRect().center())
+
 
         super().update()
 
-
-    # def paint(self, painter, option, widget):
-    #     '''重载绘图函数'''
-    #     with open(r'D:\test\twg\20211018172755.jpg', 'rb') as f:
-    #         img_bytes = f.read()
-    #     pixmap = QPixmap()
-    #     pixmap.loadFromData(img_bytes)
-    #     # pixmap = pixmap.scaledToWidth(3000, Qt.SmoothTransformation)
-    #     painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
-
-    #     painter.drawPixmap(QPointF(-1000, -500), pixmap)
-
-    # def sceneEvent(self, event):
-    #     # QEvent.GraphicsSceneWheel
-    #     print(type(event.GraphicsSceneWheel))
-
-    #     return super().sceneEvent(event)
-
-    # def wheelEvent(self, event):
-    #     print(1111111111111111111111111)
-    #     zoom_in_factor = 1.25
-    #     zoom_out_factor = 1 / zoom_in_factor
-    
-    #     # if event.delta() > 0:
-    #     if event.delta() > 0:
-    #         zoom_factor = zoom_in_factor
-    #     else:
-    #         zoom_factor = zoom_out_factor
-
-    #     self.scale(zoom_factor, zoom_factor)
 
 
 class GraphicsScene(QGraphicsScene):
@@ -93,25 +131,45 @@ class GraphicsView(QGraphicsView):
 
     def __init__(self):
         super().__init__()
-        self.scene = GraphicsScene()
-        self.scene_box = QGraphicsScene()
-        self.setScene(self.scene)
-        # hk = SystemHotkey(check_queue_interval=1)
-        # hk.register(['control', 'k'], callback=lambda x:self.reject())
-
-        # self.setSceneRect(0, 0, _w, _h)
-        # self.fitInView(self.scene.sceneRect(), Qt.KeepAspectRatio)
         self.setRenderHints(QPainter.Antialiasing | QPainter.SmoothPixmapTransform)
 
-        self.scene_box.setBackgroundBrush(QBrush(QColor(50, 50, 50), Qt.SolidPattern))
-        self.item = GraphicsPixmapItem()
-        self.item.setTransformationMode(Qt.SmoothTransformation)
-        self.scene.addItem(self.item)
+        #######################################################################
+
+        self.scene = GraphicsScene()
+        self.setScene(self.scene)
+        self.img_item = GraphicsPixmapItem()
+        self.img_item.setTransformationMode(Qt.SmoothTransformation)
+        self.scene.addItem(self.img_item)
+        # Zoom require
+        self.m_scale = 1.0
+        self.scale_timer = QTimer()
+        self.scale_timer.setSingleShot(True)
+        self.scale_timer.timeout.connect(self.scaleTimerElapsed)
+
+        self.scale_mutex = QMutex()
+
+        self.scale_request = Queue()
+
+        self.wait_condition = QWaitCondition()
+
+        self.pending_scale_sequest = ScaleRequest()   # struct
+
+        # self.scale_thread = ScaleThread(self.scaleThread)
+
+        # if not self.scale_thread.isRunning():
+        #     self.scale_thread.start()
+
+        ##########################################################################
 
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
         self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
+        # self.scale_thread = ScaleThread()
+        # self.scale_thread.start()
+
+
 
     # def wheelEvent(self, event):
     #     zoom_in_factor = 1.25
@@ -126,21 +184,119 @@ class GraphicsView(QGraphicsView):
 
     def wheelEvent(self, event):
         # https://github.com/manisandro/gImageReader/releases?page=1
-        self.set_zoom(Zoom.In if event.delta() > 0 else Zoom.Out)
+        self.set_zoom(Zoom.In if event.angleDelta().y() > 0 else Zoom.Out, QGraphicsView.AnchorUnderMouse)
         event.accept()
 
-    def set_zoom(self, action):
+    def set_zoom(self, action, anchor):
+        if not self.img_item:
+            return
+        # self.sendScaleRequest(ScaleRequest.Request.Abort)
+        # m_scale = 1.0
+        bb = QRectF()
+        bb = self.img_item.sceneBoundingRect()
+        fit = min(self.viewport().width()/bb.width(), self.viewport().height()/bb.height())
+        print(f"------------fit:{fit}")
+        if action == Zoom.Original:
+            self.m_scale = 1.0
+        elif action == Zoom.In:
+            self.m_scale = min(10., self.m_scale * 1.25)
+        elif action == Zoom.Out:
+            self.m_scale = max(0.03, self.m_scale * 0.8)
 
+        if action == Zoom.Fit or (self.m_scale/fit >= 0.9 and self.m_scale/fit <= 1.09):
+            self.m_scale = fit
+        
+        self.setTransformationAnchor(anchor)
+        t = QTransform()
+        t.scale(self.m_scale, self.m_scale)
+        self.setTransform(t)
+
+
+        if self.m_scale < 1.0:
+            self.pending_scale_sequest.type = ScaleRequest.type.Scale   # TODO
+            self.pending_scale_sequest.scale = self.m_scale
+            # self.scale_timer.start(100)
+            reader = self.img_item.img_reader(self.m_scale * 200)
+            # reader = self.img_item.img_reader(self.m_scale)
+
+            self.setScaledImage(reader, self.m_scale)
+        # else:
+        #     pix_ = QPixmap()
+        #     pix_.loadFromData(self.img_item.img_bytes1)
+        #     self.img_item.setPixmap(pix_)
+        #     self.img_item.
+        #     self.img_item.setScale(1.)
+        #     self.img_item.setTransformOriginPoint(self.img_item.boundingRect().center())
+        #     self.img_item.setPos(self.img_item.pos() - self.img_item.sceneBoundingRect().center())
+        #     print('2222222222222222222')
+
+
+        self.update()
+        # self.set_fit_window()
+
+    def set_scale_image():
         pass
+
+    def getCurrentImage():
+        pass
+
+    def getCurrentResolution():
+        pass
+
+    def getSceneBoundingRect():
+        pass
+
+    def scaleTimerElapsed(self):
+        self.sendScaleRequest(self.pending_scale_sequest)
+
+    def sendScaleRequest(self, request):
+        self.scale_timer.stop()
+        self.scale_mutex.lock()
+        self.scale_request.put(request)
+        self.wait_condition.wakeOne()
+        self.scale_mutex.unlock()
+
+    def scaleThread(self):
+        self.scale_mutex.lock()
+        while True:
+            # while self.scale_request.empty():
+            #     self.wait_condition.wait(self.scale_mutex)
+            request = self.scale_request.get(block=True)
+            if request.type == ScaleRequest.type.Quit:
+                break
+            # elif request.type == ScaleRequest.type.Scale:
+            #     self.scale_mutex.unlock()
+            self.scale_mutex.unlock()
+            if request.type == ScaleRequest.type.Scale:
+                img = QImage.fromData(self.img_item.img_bytes1)
+                print('222222222222222222222222222')
+                # QMetaObject.invokeMethod(self, "setScaledImage", Qt.BlockingQueuedConnection, Q_ARG(QImage, img), Q_ARG(float, request.scale))
+
+                self.scale_mutex.lock()
+        self.scale_mutex.unlock()
+
+    # @pyqtSlot(str)
+    def setScaledImage(self, image: QImage, scale: float):
+        self.scale_mutex.lock()
+
+        self.img_item.setPixmap(QPixmap.fromImage(image))
+        print(f"====scale2=={1.0/scale}")
+        self.img_item.setScale(1.0/scale)
+        self.img_item.setTransformOriginPoint(self.img_item.boundingRect().center())
+        self.img_item.setPos(self.img_item.pos() - self.img_item.sceneBoundingRect().center())
+        self.scale_mutex.unlock()
 
     def set_fit_window(self):
         """missing docstring"""
         self.scene.setSceneRect(self.scene.itemsBoundingRect())
+        # self.centerOn(self.scene.sceneRect().center())
         self.fitInView(self.scene.itemsBoundingRect().adjusted(-100, -100, 100, 100), Qt.KeepAspectRatio)
 
     def mouseDoubleClickEvent(self, event):
         """missing docstring"""
-        self.item.update()
+        self.img_item.update()
+        self.scene.setSceneRect(self.img_item.sceneBoundingRect())
+
         print('mouseDouble')
         # print(self.scene.sceneRect())
 
@@ -155,7 +311,10 @@ class GraphicsView(QGraphicsView):
 
         # self.setScene(self.scene_box)
 
-        self.set_fit_window()
+        self.set_zoom(Zoom.Fit, GraphicsView.AnchorUnderMouse)
+        # self.set_fit_window()
+        # print(f'==itempos=={self.img_item.pos()}==item.boundingRect(){self.img_item.boundingRect().center()} ==========boundingRect.sceneBoundingRect().center(){self.img_item.sceneBoundingRect().center()}')
+
         super().mouseDoubleClickEvent(event)
 
     def reject(self):
