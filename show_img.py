@@ -12,7 +12,7 @@ import fire
 from PyQt5.QtCore import QPointF, QRectF, Qt, QThread, QTimer, QMutex, QWaitCondition, QMetaObject, Q_ARG, pyqtSlot, QByteArray, QIODevice, QBuffer
 from PyQt5.QtGui import (QBrush, QColor, QImage, QPainter, QPainterPath, QPen, QImageReader,
                          QPixmap, QScreen, QTransform)
-from PyQt5.QtWidgets import (QApplication, QGraphicsItem, QGraphicsPixmapItem,
+from PyQt5.QtWidgets import (QApplication, QGraphicsItem, QGraphicsPixmapItem, QPushButton,
                              QGraphicsScene, QGraphicsView, QHBoxLayout,
                              QMainWindow, QVBoxLayout, QWidget)
 from system_hotkey import SystemHotkey
@@ -329,6 +329,10 @@ def main():
     layout0 = QHBoxLayout()
     layout0.setSpacing(0)
     layout0.setContentsMargins(0, 0, 0, 0)
+    print("显示图片1212321")
+
+    down = QPushButton(app.tr('显示图片'))
+    layout0.addWidget(down)
 
     StackGraphicsView = QWidget()
     layout = QVBoxLayout()

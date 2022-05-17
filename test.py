@@ -50,3 +50,5 @@ class C:
         if hasattr(val, '__get__'):
             raise AttributeError('NO DESCRIPTOR !!!!!')
         return val
+
+
