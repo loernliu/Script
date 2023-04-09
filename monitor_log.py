@@ -17,7 +17,7 @@ process_dict = {}
 def monitor_log(file_path, time_chenge, process_dict, restart_list):
     try:
         logging.info("开始监控，监控的日志文件是：%s", file_path)
-        file = open(file_path, 'r')
+        file = open(file_path, "r")
         file.seek(0, 2)
         num = 0
         while True:
@@ -26,7 +26,7 @@ def monitor_log(file_path, time_chenge, process_dict, restart_list):
                 time.sleep(1)
                 logging.info("日志停止变化")
                 num += 1
-                if num == int(60*time_chenge):
+                if num == int(60 * time_chenge):
                     LOCK.acquire()
                     num = 0
                     logging.info("发现日志文件长时间没有变化，重启进程")
@@ -52,7 +52,7 @@ def restart_process(process):
     process_name = process.name()
     process.terminate()
     time.sleep(2)
-    win32api.ShellExecute(0, 'open', process_path, '', '', 1)
+    win32api.ShellExecute(0, "open", process_path, "", "", 1)
     process = [i for i in psutil.process_iter() if i.name() == process_name][0]
     process_dict[process_name] = process
     logging.info("重启成功")
@@ -62,8 +62,7 @@ def restart_process(process):
 def find_process(process_name_list):
     process_dict = {}
     for process_name in process_name_list:
-        process = [i for i in psutil.process_iter() if i.name()
-                   == process_name]
+        process = [i for i in psutil.process_iter() if i.name() == process_name]
         if process:
             process_dict[process[0].name()] = process[0]
     logging.info("找到进程:\n%s", [i for i in process_dict])
@@ -78,18 +77,24 @@ def monitor_process(process_dict, restart_list, limit_memory):
 
     while True:
         memory = psutil.virtual_memory()
-        system_memory = round(memory.total/1024/1024, 2)
-        free = round(memory.free/1024/1024, 2)
+        system_memory = round(memory.total / 1024 / 1024, 2)
+        free = round(memory.free / 1024 / 1024, 2)
         logging.info("系统总内存：%s，剩余内存：%s", system_memory, free)
         process_use_memory = 0
         for i in process_dict:
             current_process = process_dict.get(i)
             process_memory = round(
-                current_process.memory_full_info().uss/1024/1024, 2)
+                current_process.memory_full_info().uss / 1024 / 1024, 2
+            )
             process_use_memory += process_memory
             memory_percent = round(current_process.memory_percent(), 2)
-            logging.info("进程pid：%s,进程名称：%s,占用内存：%s,占用比例：%s", current_process.pid,
-                         current_process.name(), process_memory, memory_percent)
+            logging.info(
+                "进程pid：%s,进程名称：%s,占用内存：%s,占用比例：%s",
+                current_process.pid,
+                current_process.name(),
+                process_memory,
+                memory_percent,
+            )
 
         logging.info("监控进程使用总%s", process_use_memory)
         if process_use_memory > limit_memory:
@@ -108,9 +113,10 @@ def init_log():
     logger.setLevel(logging.INFO)
     logger.propagate = False
     abs_path = os.path.dirname(os.path.abspath(__file__))
-    log_path = os.path.join(abs_path, 'logs/vi_monitor.log')
+    log_path = os.path.join(abs_path, "logs/vi_monitor.log")
     formatter = logging.Formatter(
-        "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s")
+        "%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s"
+    )
     ch = logging.StreamHandler()
     ch.setLevel(logging.DEBUG)
     ch.setFormatter(formatter)
@@ -129,8 +135,7 @@ if __name__ == "__main__":
     com_args = sys.argv
     init_log()
     # 进程监控列表
-    process_name_list = ["wg_vi.exe", "el_station.exe",
-                         "wg_station.exe"]
+    process_name_list = ["wg_vi.exe", "el_station.exe", "wg_station.exe"]
     # 重启列表
     restart_list = ["wg_vi.exe", "el_station.exe", "wg_station.exe"]
     # 被监控的进程最大允许使用内存，大于这个值重启进程
@@ -143,7 +148,8 @@ if __name__ == "__main__":
     process_dict = find_process(process_name_list)
 
     log_monitor = threading.Thread(
-        target=monitor_log, args=(file_path, time_chenge, process_dict, restart_list))
+        target=monitor_log, args=(file_path, time_chenge, process_dict, restart_list)
+    )
 
     # process_monitor = threading.Thread(
     #     target=monitor_process, args=(process_name_list, restart_list, limit_memory))

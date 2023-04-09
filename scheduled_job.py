@@ -4,9 +4,10 @@ import time
 
 
 def print_test():
-    print('--------------------')
+    print("--------------------")
 
-job_defaults = {'misfire_grace_time': 30}
+
+job_defaults = {"misfire_grace_time": 30}
 scheduler1 = BackgroundScheduler(job_defaults=job_defaults)
 trigger1 = CronTrigger(second=20)
 scheduler1.add_job(print_test, trigger=trigger1)

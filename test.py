@@ -42,13 +42,11 @@ class Descriptor:
 
 
 class C:
-    d = Descriptor('d')
+    d = Descriptor("d")
 
     def __getattribute__(self, key):
-        if key == 'd':
-            val = self.__class__.__dict__['d']
-        if hasattr(val, '__get__'):
-            raise AttributeError('NO DESCRIPTOR !!!!!')
+        if key == "d":
+            val = self.__class__.__dict__["d"]
+        if hasattr(val, "__get__"):
+            raise AttributeError("NO DESCRIPTOR !!!!!")
         return val
-
-

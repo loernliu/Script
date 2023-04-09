@@ -15,15 +15,23 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
-from vi.views import return_data, save_vi_result, data_return1, data_return2, data_return3, data_return4, data_return5
+from vi.views import (
+    return_data,
+    save_vi_result,
+    data_return1,
+    data_return2,
+    data_return3,
+    data_return4,
+    data_return5,
+)
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('vi_detect', return_data),
-    path('vi_detect1', data_return1),
-    path('vi_detect2', data_return2),
-    path('vi_detect3', data_return3),
-    path('vi_detect4', data_return4),
-    path('vi_detect5', data_return5),
-    path('save_vi_result', save_vi_result)
+    path("vi_detect", return_data),
+    path("vi_detect1", data_return1),
+    path("vi_detect2", data_return2),
+    path("vi_detect3", data_return3),
+    path("vi_detect4", data_return4),
+    path("vi_detect5", data_return5),
+    path("save_vi_result", save_vi_result),
 ]

@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import os
+
 # 调整最大值
 MAX_VALUE = 100
 
@@ -15,8 +16,7 @@ def change_image_lightness(input_img_path, output_img_path, lightness):
     """
 
     # 加载彩色图像归一化且转换为浮点型
-    image = cv2.imread(input_img_path, cv2.IMREAD_COLOR).astype(
-        np.float32) / 255.0
+    image = cv2.imread(input_img_path, cv2.IMREAD_COLOR).astype(np.float32) / 255.0
 
     # 颜色空间转换 BGR转为HLS
     # HLS 有三个分量，hue（色相）、lightness（亮度）、saturation（饱和度）。
@@ -39,10 +39,14 @@ if __name__ == "__main__":
     # output_dir = 'lightness_changed.jpg'
     lightness = 80  # 亮度-100~+100
     # change_image_lightness(img_path, output_dir, lightness)
-    files = os.listdir('./image_light/wg')
+    files = os.listdir("./image_light/wg")
     for file in files:
         print(file)
-        change_image_lightness("./image_light/wg/{}".format(file), os.path.splitext(file)[0]+"changed.jpg", lightness)
+        change_image_lightness(
+            "./image_light/wg/{}".format(file),
+            os.path.splitext(file)[0] + "changed.jpg",
+            lightness,
+        )
 
     # saturation = 0    # 饱和度饱和度-100~+100
     # 转化图片

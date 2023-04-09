@@ -4,18 +4,20 @@ import copy
 
 
 # 读取图片
-image = cv2.imread('D:/test/wg/20211018172751.jpg', 0)
+image = cv2.imread("D:/test/wg/20211018172751.jpg", 0)
 
 # 初始化参数
 rows, cols = image.shape
 sigma = 2.84089642
-kernel_size = np.int(np.round(sigma*3)*2+1)  # 一般高斯核尺寸通过计算得到：6*sigma+1 要保证尺寸的宽度和高度都为奇数
-radium = kernel_size//2
+kernel_size = np.int(
+    np.round(sigma * 3) * 2 + 1
+)  # 一般高斯核尺寸通过计算得到：6*sigma+1 要保证尺寸的宽度和高度都为奇数
+radium = kernel_size // 2
 
 # 通过函数 cv2.GaussianBlur 进行滤波处理(模糊处理)
 result1 = cv2.GaussianBlur(image, ksize=(kernel_size, kernel_size), sigmaX=sigma)
 new_img_data = cv2.resize(result1, (10916, 1846), interpolation=cv2.INTER_AREA)
-cv2.imshow('result1', new_img_data)
+cv2.imshow("result1", new_img_data)
 
 # 生成高斯核
 # kernel_1d = cv2.getGaussianKernel(ksize=kernel_size, sigma=sigma, ktype=cv2.CV_32F)

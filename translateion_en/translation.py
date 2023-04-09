@@ -4,14 +4,16 @@ import re
 
 def generate_translate_dict():
     translate_dict = {}
-    with open('C:/Users/lwp/Desktop/work/translateion_en/中英文对照词典.md', 'r', encoding='utf8') as f:
+    with open(
+        "C:/Users/lwp/Desktop/work/translateion_en/中英文对照词典.md", "r", encoding="utf8"
+    ) as f:
         while True:
             replace_str = f.readline().strip()
             if not replace_str:
                 break
-            replace_list = replace_str.split(':')
+            replace_list = replace_str.split(":")
             ch_str = replace_list[0]
-            en_str = replace_list[-1].replace("_", ' ')
+            en_str = replace_list[-1].replace("_", " ")
             translate_dict[ch_str] = en_str
 
     return translate_dict
@@ -36,13 +38,13 @@ def find_file(src_path):
             find_file(item)
         try:
             last_name = os.path.splitext(item)[-1]
-            if last_name == '.py' or last_name == '.yml':
-                f = open(item, 'r', encoding='utf8')
+            if last_name == ".py" or last_name == ".yml":
+                f = open(item, "r", encoding="utf8")
                 file_str = f.read()
                 f.close()
                 print(item)
                 new_file_str = replace_file_str(file_str)
-                f = open(item, 'w', encoding='utf8')
+                f = open(item, "w", encoding="utf8")
                 f.write(new_file_str)
                 f.close()
 
@@ -51,5 +53,5 @@ def find_file(src_path):
 
 
 if __name__ == "__main__":
-    src_path = 'E:/gitee/el_app/src'
+    src_path = "E:/gitee/el_app/src"
     find_file(src_path)

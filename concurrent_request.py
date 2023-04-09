@@ -32,14 +32,11 @@ from functools import partial
 from aiohttp import ClientSession, ClientTimeout
 
 
-__all__ = (
-    'map',
-    'get', 'options', 'head', 'post', 'put', 'patch', 'delete'
-)
+__all__ = ("map", "get", "options", "head", "post", "put", "patch", "delete")
 
 
 class AsyncRequest(object):
-    """ Asynchronous request."""
+    """Asynchronous request."""
 
     def __init__(self, method, url, **kwargs):
         self.method = method
@@ -57,14 +54,16 @@ class AsyncRequest(object):
         """
         merged_kwargs = {}
         merged_kwargs.update(self.kwargs)
-        timeout = self.kwargs.get('timeout', None)
+        timeout = self.kwargs.get("timeout", None)
         if timeout:
-            merged_kwargs.update({'timeout': ClientTimeout(total=timeout)})
+            merged_kwargs.update({"timeout": ClientTimeout(total=timeout)})
         merged_kwargs.update(kwargs)
         try:
             self.session = ClientSession()
             async with self.session:
-                self._response = await self.session.request(self.method, self.url, **merged_kwargs)
+                self._response = await self.session.request(
+                    self.method, self.url, **merged_kwargs
+                )
                 # the `start` `read` `text` `json` method of the response is async, convert to sync
                 # temp = await self._response.json()
                 # print('--------------------->')
@@ -78,6 +77,7 @@ class AsyncRequest(object):
 
 class MapResponse:
     """convert `ClientResponse` async mothod to sync"""
+
     def __init__(self, response):
         self.response = response
 
@@ -117,7 +117,7 @@ def map(requests, exception_handler=None):
     """Concurrently converts a list of Requests to Responses."""
     requests = list(requests)
     try:
-        if sys.platform == 'win32':
+        if sys.platform == "win32":
             # windows use ProactorEventLoop
             loop = asyncio.ProactorEventLoop()
             asyncio.set_event_loop(loop)
@@ -139,9 +139,9 @@ def map(requests, exception_handler=None):
     for request in requests:
         if request.response is not None:
             ret.append(request.response)
-        elif exception_handler and hasattr(request, 'exception'):
+        elif exception_handler and hasattr(request, "exception"):
             ret.append(exception_handler(request, request.exception))
-        elif exception_handler and not hasattr(request, 'exception'):
+        elif exception_handler and not hasattr(request, "exception"):
             ret.append(exception_handler(request, None))
         else:
             ret.append(None)
@@ -149,33 +149,42 @@ def map(requests, exception_handler=None):
     return ret
 
 
-get = partial(AsyncRequest, 'GET')
-options = partial(AsyncRequest, 'OPTIONS')
-head = partial(AsyncRequest, 'HEAD')
-post = partial(AsyncRequest, 'POST')
-put = partial(AsyncRequest, 'PUT')
-patch = partial(AsyncRequest, 'PATCH')
-delete = partial(AsyncRequest, 'DELETE')
+get = partial(AsyncRequest, "GET")
+options = partial(AsyncRequest, "OPTIONS")
+head = partial(AsyncRequest, "HEAD")
+post = partial(AsyncRequest, "POST")
+put = partial(AsyncRequest, "PUT")
+patch = partial(AsyncRequest, "PATCH")
+delete = partial(AsyncRequest, "DELETE")
 
 
 if __name__ == "__main__":
     import json
     import time
+
     start_time = time.time()
-    headers = {'content-type': "application/json"}
-    with open(r"C:\Users\LiuWanpin\Downloads\test.json", "r", encoding='utf8') as f:
+    headers = {"content-type": "application/json"}
+    with open(r"C:\Users\LiuWanpin\Downloads\test.json", "r", encoding="utf8") as f:
         post_data = f.read()
     post_data = post_data
     # req_list = [post("http://192.168.3.216:12140/ws_vi_detect", headers=headers, data=post_data, timeout=1000) for url in range(2)]
-    req_list = [post("http://127.0.0.1:8000/vi_detect1", headers=headers, data=post_data, timeout=10) for url in range(1)]
+    req_list = [
+        post(
+            "http://127.0.0.1:8000/vi_detect1",
+            headers=headers,
+            data=post_data,
+            timeout=10,
+        )
+        for url in range(1)
+    ]
     print(req_list)
 
     def except_callback(request, exception):
-        print('================start================')
+        print("================start================")
         print(request)
         print(type(exception))
         print(exception)
-        print('================end==================')
+        print("================end==================")
 
     res_list = map(req_list, except_callback)
     print(res_list)
@@ -190,5 +199,5 @@ if __name__ == "__main__":
         # print("vi_result:%s" % res_data['vi_result'])
 
     end_time = time.time()
-    time_used = (end_time - start_time)
+    time_used = end_time - start_time
     print("用时: %.3f秒" % time_used)

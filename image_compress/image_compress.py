@@ -8,7 +8,8 @@ from PIL import Image
 
 class CompressImage(object):
     """图片压缩"""
-    def __init__(self, infile, outfile='', mb=1500, quality=50):
+
+    def __init__(self, infile, outfile="", mb=1500, quality=50):
         """不改变图片尺寸对图片进行压缩
         :param infile: 压缩源文件
         :param outfile: 压缩文件保存地址
@@ -24,18 +25,17 @@ class CompressImage(object):
         if suffix != ".jpg":
             self.png_to_jpg(infile)
 
-
     @staticmethod
     def _get_size(file):
         """获取文件大小:KB"""
         size = os.path.getsize(file)
-        return size/1024
+        return size / 1024
 
     def get_outfile(self):
         """压缩文件保存地址"""
         if self.outfile:
             return self.outfile
-        self.outfile = '{}-transformed.jpg'.format(self.dir)
+        self.outfile = "{}-transformed.jpg".format(self.dir)
         return self.outfile
 
     def compress_image(self):
@@ -47,7 +47,7 @@ class CompressImage(object):
         img = Image.open(self.infile)
         while o_size > self.mb:
             img.save(outfile, quality=self.quality)
-            self.quality = int(self.quality*0.8)
+            self.quality = int(self.quality * 0.8)
             o_size = self._get_size(outfile)
             if self.quality == 0:
                 break
@@ -62,10 +62,10 @@ class CompressImage(object):
                 # prevent IOError: cannot write mode RGBA as BMP
                 r, g, b, self.a = img.split()
                 img = Image.merge("RGB", (r, g, b))
-                img.convert('RGB').save(outfile, quality=70)
+                img.convert("RGB").save(outfile, quality=70)
                 os.remove(PngPath)
             else:
-                img.convert('RGB').save(outfile, quality=70)
+                img.convert("RGB").save(outfile, quality=70)
                 os.remove(PngPath)
             self.infile = outfile
             return outfile
@@ -81,16 +81,14 @@ class CompressImage(object):
     #     img.save(outfile)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     time1 = time.time()
-    src_file_path = './images/LRP904032210302131652.png'
+    src_file_path = "./images/LRP904032210302131652.png"
     # print('压缩前图片大小：%d KB' % int(os.path.getsize(src_file_path)/1024))
     compress = CompressImage(src_file_path, mb=2000)
     i_dir, size = compress.compress_image()
     # compress.jpg_to_png(i_dir)
     # print('压缩后图片大小：%d KB' % int(size))
-
-
 
     # files = os.listdir('./images')
     # for file in files:
@@ -100,16 +98,15 @@ if __name__ == '__main__':
     # print('总共耗时：' + str(time2 - time1) + 's')
 
 
-
 # def convertPNG(img1):
 #     img = img1.convert('RGBA')
-#     r, g, b, a = img.split()   
+#     r, g, b, a = img.split()
 #     a0 = np.array(b) #转换为np矩阵
 #     a1 = cv2.threshold(a0, 10, 255, cv2.THRESH_BINARY) #设定阈值
 #     a2 = Image.fromarray(a1[1]) #转换为Image的tube格式，注意为a1[1]
 #     a3 = np.array(a2)
 #     a4 = Image.fromarray(a3.astype('uint8')) #由float16转换为uint8
-#     img = Image.merge("RGBA", (b, g, r, a4))  
+#     img = Image.merge("RGBA", (b, g, r, a4))
 #     return img
 
 
